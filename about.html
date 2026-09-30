@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О проекте · Андрей Вознесенский</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: #f9f5f0;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: #2c2c2c;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        .page {
+            max-width: 1100px;
+            width: 100%;
+            background: #fefcf9;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+            border-radius: 20px;
+            padding: 2.5rem 2.2rem;
+            border: 1px solid #ede7e0;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            border-bottom: 1px solid #e3d9d0;
+            padding-bottom: 1.25rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            color: #2a241f;
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .back-link {
+            display: inline-block;
+            padding: 8px 18px;
+            border: 1px solid #c9bfb0;
+            border-radius: 20px;
+            background: transparent;
+            color: #4a4238;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            background: #e8e2d8;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .dedication {
+            margin-bottom: 1.5rem;
+            text-align: right;
+            font-style: italic;
+        }
+
+        .about-kicker {
+            display: inline-block;
+            margin-bottom: 12px;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #8a8074;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 18px;
+            color: #1a1510;
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            margin: 22px 0 10px;
+            color: #2a2520;
+            font-weight: 600;
+        }
+
+        p, li {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #433b34;
+        }
+
+        ul {
+            padding-left: 1.4rem;
+            margin: 12px 0;
+        }
+
+        strong {
+            color: #1a1510;
+        }
+
+        a {
+            color: #4a4238;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: #1a1510;
+        }
+
+        @media (max-width: 640px) {
+            .page { padding: 28px 20px; }
+            .title { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <div class="topbar">
+            <div class="title">Андрей Вознесенский</div>
+            <a class="back-link" href="index.html">← вернуться к чтению</a>
+        </div>
+
+        <article class="about-content">
+            <p class="dedication">Посвящается Зое Богоуславской</p>
+            <span class="about-kicker">О проекте</span>
+            <h2>Что это?</h2>
+            <p>Это адаптивное цифровое издание, которое подстраивается под интересы читателя. Вместо фиксированного оглавления мы предлагаем возможность самостоятельно выбирать, какие стихи Андрея Вознесенского читать — по их форме, сложности и тематике.</p>
+            <p>Кнопки на верхней панели позволяют пересобирать чтение, выделяя только те тексты, которые соответствуют выбранным критериям.</p>
+
+            <h3>Интерфейс</h3>
+            <p>Сервис состоит из трёх управляющих блоков и карточки стихотворения.</p>
+
+            <h3>1. Фильтры</h3>
+            <p><strong>Тип стиха</strong> — «классический» (регулярный силлабо-тонический стих, привычный по школьной программе) или «неклассический» (акцентный стих, верлибр, экспериментальные формы).</p>
+            <p><strong>Сложность для чтения</strong> — «простой» или «сложный». Этот параметр вычисляется автоматически на основе метрик удобочитаемости: длины слов, частоты редких конструкций, синтаксической плотности.</p>
+            <p><strong>Тематика</strong> — выпадающий список с темами, выделенными с помощью тематического моделирования. Среди них — «женская тема», «город», «любовь», «поэзия и искусство», «время и история» и другие.</p>
+
+            <h3>2. Карточка стихотворения</h3>
+            <p>В центральном блоке показывается одно стихотворение, соответствующее заданным критериям. Под заголовком вы видите название, тематическую метку и сам текст.</p>
+
+            <h3>3. Навигация</h3>
+            <p>Под карточкой находятся кнопки управления: «↺ сброс», «случайное», «← назад» и «вперёд →».</p>
+            <p>Справа отображается счётчик: сколько всего стихотворений соответствует активным фильтрам и какое из них вы сейчас читаете.</p>
+
+            <h3>Что стоит за технологией</h3>
+            <ul>
+                <li><strong>Распознавание метра:</strong> мы автоматически определяем, написан ли текст классическим ямбом, хореем или амфибрахием, или это неклассический акцентный стих.</li>
+                <li><strong>Метрики удобочитаемости:</strong> мы вычисляем индекс сложности текста на основе средней длины слова, частоты нестандартных синтаксических конструкций и других формальных признаков.</li>
+                <li><strong>Тематическое моделирование:</strong> алгоритм автоматически выделяет смысловые кластеры во всём корпусе, группируя стихи по близости лексики и тем.</li>
+            </ul>
+            <p>Все расчёты выполнены заранее, а интерфейс работает с готовыми результатами.</p>
+
+            <h3>Для кого этот проект</h3>
+            <p>Для тех, кто хочет читать Вознесенского, но не знает, с чего начать. Для тех, кто помнит его по песням и хочет увидеть, что он еще написал. Для тех, кому интересно, как устроена поэзия XX века и как современные методы могут помочь в этом разобраться.</p>
+            <p>Мы не заменяем книгу. Мы предлагаем новый способ встречи с текстом. Так поэзия выходит за пределы статичного тома и вливается в живое пространство чтения.</p>
+
+            <h3>Кто мы?</h3>
+            <p>Издание создано студентами магистерской программы <a href="https://www.hse.ru/ma/dh/about/">«Цифровые технологии в гуманитарных исследованиях» НИУ ВШЭ</a>: Ксения Анисимова, Максим Романенко, Йолдуз Хаертдинова, Дарья Тюрякова-Матвеева. Идея и руководство: Борис Орехов.</p>
+
+            <h3>Правовой статус</h3>
+            <p>TBA</p>
+
+            <h3>Дополнительные ссылки</h3>
+            <ul>
+                <li>Статья в научно-популярном жанре: <a href="https://sysblok.ru/blog/pro-cifrovye-izdanija/" target="_blank" rel="noreferrer">https://sysblok.ru/blog/pro-cifrovye-izdanija/</a></li>
+                <li>Код открыт: <a href="https://github.com/haertdinova/voznesenkylab_poetics" target="_blank" rel="noreferrer">https://github.com/haertdinova/voznesenkylab_poetics</a></li>
+            </ul>
+        </article>
+    </main>
+</body>
+</html>

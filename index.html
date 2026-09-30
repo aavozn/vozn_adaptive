@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Андрей Вознесенский · адаптивное издание</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+          background-color: #f9f5f0;
+          font-family: 'Georgia', 'Times New Roman', serif;
+          color: #2c2c2c;
+          line-height: 1.6;
+          padding: 2rem 1.5rem;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .container {
+          max-width: 1100px;
+          width: 100%;
+          background: #fefcf9;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+          border-radius: 20px;
+          padding: 2.5rem 2.2rem;
+          transition: all 0.15s ease;
+          border: 1px solid #ede7e0;
+        }
+
+        header {
+            border-bottom: 1px solid #e3d9d0;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .header-copy {
+            flex: 1 1 320px;
+            min-width: 0;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            letter-spacing: -0.3px;
+            color: #2a241f;
+            margin-bottom: 0.2rem;
+        }
+
+        .subtitle {
+            font-style: italic;
+            color: #6b6459;
+            font-size: 15px;
+            margin-top: 8px;
+            padding-left: 14px;
+            border-left: 2px solid #c9bfb0;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 24px;
+            font-size: 14px;
+            flex-wrap: wrap;
+            order: 3;
+        }
+
+        .header-art {
+            width: min(260px, 32vw);
+            min-width: 120px;
+            height: 120px;
+            border-radius: 7px;
+            border: 1px solid #d8d0c7;
+            background-color: #f9f5f0;
+            background-image: url('header-art.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: inset 0 0 0 1px rgba(42, 37, 32, 0.04);
+            flex-shrink: 0;
+            margin: 0 auto;
+            order: 2;
+            background-blend-mode: multiply;
+        }
+
+        .header-links a {
+            color: #4a4238;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .header-links a:hover {
+            color: #1a1510;
+        }
+
+        .header-links a::before {
+            margin-right: 4px;
+        }
+
+        .link-about::before { content: '○'; }
+        .link-random::before { content: '◇'; }
+
+        /* Фильтры */
+        .filters {
+            background: #f0ebe4;
+            border-radius: 12px;
+            padding: 20px 28px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #6b6459;
+        }
+
+        .filter-btn {
+            padding: 6px 16px;
+            border: 1px solid #c9bfb0;
+            background: transparent;
+            border-radius: 20px;
+            font-family: inherit;
+            font-size: 14px;
+            color: #4a4238;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            background: #e8e2d8;
+        }
+
+        .filter-btn.active {
+            background: #d4c9b8;
+            border-color: #a89b88;
+            color: #2a2520;
+        }
+
+        .filter-select {
+            padding: 6px 28px 6px 14px;
+            border: 1px solid #c9bfb0;
+            background: #faf8f5;
+            border-radius: 20px;
+            font-family: inherit;
+            font-size: 14px;
+            color: #4a4238;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234a4238' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+        }
+
+        /* Карточка стиха */
+        .poem-card {
+            background: #faf8f5;
+            border: 1px solid #e0dcd5;
+            border-radius: 12px;
+            padding: 40px 48px;
+            min-height: 280px;
+            margin-bottom: 32px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: min(100%, 920px);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .poem-header {
+            width: 100%;
+            max-width: 760px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .poem-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .poem-tags span {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: #f0ebe4;
+            border: 1px solid #d7cec3;
+            color: #4a4238;
+            font-size: 12px;
+            font-style: italic;
+            letter-spacing: 0.1px;
+        }
+
+        .poem-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1a1510;
+            text-align: center;
+        }
+
+        .poem-text {
+            width: 100%;
+            max-width: 760px;
+            font-size: 16px;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            color: #2a2520;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .no-results {
+            font-size: 17px;
+            line-height: 1.6;
+            color: #4a4238;
+        }
+
+        .no-results strong {
+            color: #1a1510;
+        }
+
+        /* Навигация */
+        .navigation {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding-top: 24px;
+            border-top: 1px solid #e0dcd5;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 8px 18px;
+            border: 1px solid #c9bfb0;
+            background: transparent;
+            border-radius: 20px;
+            font-family: inherit;
+            font-size: 14px;
+            color: #4a4238;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: #e8e2d8;
+        }
+
+        .nav-btn.primary {
+            background: #d4c9b8;
+            border-color: #a89b88;
+        }
+
+        .nav-btn.primary:hover {
+            background: #c9bfb0;
+        }
+
+        .nav-counter {
+            font-size: 13px;
+            color: #8a8074;
+            font-style: italic;
+        }
+
+        /* Футер */
+        footer {
+            text-align: center;
+            padding-top: 32px;
+            margin-top: 32px;
+            border-top: 1px solid #e0dcd5;
+            font-size: 13px;
+            color: #8a8074;
+        }
+
+        .footer-image {
+            display: block;
+            width: min(100%, 720px);
+            height: auto;
+            margin: 24px auto 0;
+        }
+
+        footer a {
+            color: #4a4238;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Загрузка */
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            font-style: italic;
+            color: #8a8074;
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 28px 20px; }
+            h1 { font-size: 32px; }
+            .poem-card { padding: 28px 24px; }
+            .filters { padding: 16px; }
+            header { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-copy">
+                <h1>Андрей Вознесенский</h1>
+                <div class="subtitle">адаптивное издание</div>
+            </div>
+            <div class="header-art" aria-label="Abstract header illustration" title="Abstract header illustration"></div>
+            <nav class="header-links">
+                <a href="about.html" class="link-about">описание проекта</a>
+                <a href="#" class="link-random" id="random-link">случайное стихотворение</a>
+            </nav>
+        </header>
+
+        <section class="filters">
+            <div class="filter-group">
+                <span class="filter-label">стих</span>
+                <button class="filter-btn" data-filter="verse" data-value="classic">классический</button>
+                <button class="filter-btn" data-filter="verse" data-value="nonclassic">неклассический</button>
+            </div>
+            <div class="filter-group">
+                <span class="filter-label">сложность</span>
+                <button class="filter-btn" data-filter="complexity" data-value="simple">простой</button>
+                <button class="filter-btn" data-filter="complexity" data-value="complex">сложный</button>
+            </div>
+            <div class="filter-group">
+                <span class="filter-label">тематика</span>
+                <select class="filter-select" id="topic-select">
+                    <option value="all">все темы</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="poem-card" id="poem-card">
+            <div class="loading" id="loading">Загрузка корпуса стихов…</div>
+        </section>
+
+        <section class="navigation">
+            <div class="nav-buttons">
+                <button class="nav-btn" id="btn-reset">↺ сброс</button>
+                <button class="nav-btn primary" id="btn-random">случайное</button>
+                <button class="nav-btn" id="btn-prev">← назад</button>
+                <button class="nav-btn" id="btn-next">вперёд →</button>
+            </div>
+            <div class="nav-counter" id="counter">показано: 0</div>
+        </section>
+
+        <footer>
+            поэзия Андрея Вознесенского · адаптивный интерфейс
+            <span style="margin: 0 8px;">|</span>
+            <a href="about.html">описание проекта</a>
+            <img class="footer-image" src="footer.jpg" alt="">
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
