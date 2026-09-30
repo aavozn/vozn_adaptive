@@ -18,7 +18,7 @@
 
 ## Доступ
 
-Издание доступно по ссылке [vozn.github.io](vozn.github.io)
+Издание доступно по ссылке [vozn-adaptive.github.io](vozn-adaptive.github.io)
 
 ## Правовой статус
 TBA
